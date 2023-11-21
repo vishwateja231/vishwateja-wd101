@@ -1,7 +1,7 @@
 let userForm = document.getElementById("user-form");
 
 const retrieveEntries = () => {
-  let entries = localStorage.getItem("user-entries");
+  let type = localStorage.getItem("user-entries");
   if (entries) {
     return JSON.parse(entries);
   } else {
@@ -9,12 +9,12 @@ const retrieveEntries = () => {
   }
 };
 
-let userEntries = retrieveEntries();
+let  vt = retrieveEntries();
 
 const displayEntries = () => {
-  const entries = retrieveEntries();
+  const type = retrieveEntries();
   
-  const tableEntries = entries.map((entry) => {
+  const tableEntries = type.map((entry) => {
     const nameCell = `<td class='border px-4 py-2'>${entry.name}</td>`;
     const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`;
     const passwordCell = `<td class='border px-4 py-2'>${entry.password}</td>`;
@@ -40,11 +40,11 @@ const displayEntries = () => {
 };
 
 const calculateAge = (dob) => {
-  const today = new Date();
+  const  ye = new Date();
   const birthDate = new Date(dob);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+  let age =  ye.getFullYear() - birthDate.getFullYear();
+  const monthDiff =  ye.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 &&  ye.getDate() < birthDate.getDate())) {
     age--;
   }
   return age;
@@ -72,9 +72,9 @@ const saveUserForm = (event) => {
     dob,
     acceptedTermsAndconditions,
   };
-  userEntries.push(entry);
+   vt.push(entry);
   
-  localStorage.setItem("user-entries", JSON.stringify(userEntries));
+  localStorage.setItem("user-entries", JSON.stringify( vt));
   displayEntries();
 };
 
