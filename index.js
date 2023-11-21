@@ -15,12 +15,12 @@ const displayEntries = () => {
   const entries = retrieveEntries();
   
   const tableEntries = entries.map((entry) => {
-    const nameCell0 = `<td class='border px-4 py-2'>${entry.name}</td>`;
-    const emailCell0 = `<td class='border px-4 py-2'>${entry.email}</td>`;
-    const passwordCell0 = `<td class='border px-4 py-2'>${entry.password}</td>`;
-    const dobCell0 = `<td class='border px-4 py-2'>${entry.dob}</td>`;
-    const acceptTermsCell0 = `<td class='border px-4 py-2'>${entry.acceptedTermsAndconditions}</td>`;
-    const row = `<tr>${nameCell0}${emailCell0}${passwordCell0}${dobCell0}${acceptTermsCell0}</tr>`;
+    const nameCell = `<td class='border px-4 py-2'>${entry.name}</td>`;
+    const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`;
+    const passwordCell = `<td class='border px-4 py-2'>${entry.password}</td>`;
+    const dobCell = `<td class='border px-4 py-2'>${entry.dob}</td>`;
+    const acceptTermsCell = `<td class='border px-4 py-2'>${entry.acceptedTermsAndconditions}</td>`;
+    const row = `<tr>${nameCell}${emailCell}${passwordCell}${dobCell}${acceptTermsCell}</tr>`;
     return row;
   }).join("\n");
 
@@ -39,7 +39,7 @@ const displayEntries = () => {
   details.innerHTML = table;
 };
 
-const calculateAges = (dob) => {
+const calculateAge = (dob) => {
   const today = new Date();
   const birthDate = new Date(dob);
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -59,7 +59,7 @@ const saveUserForm = (event) => {
   const acceptedTermsAndconditions = document.getElementById("acceptTerms").checked;
   
   // Calculate age and check if it's between 18 and 55
-  const age = calculateAges(dob);
+  const age = calculateAge(dob);
   if (age < 18 || age > 55) {
     alert("Age must be between 18 and 55.");
     return;
