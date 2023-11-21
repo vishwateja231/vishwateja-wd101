@@ -1,7 +1,7 @@
 let userForm = document.getElementById("user-form");
 
 const retrieveEntries = () => {
-  let vt = localStorage.getItem("user-entries");
+  let vt = localStorage.getItem("user-vt");
   if (vt) {
     return JSON.parse(vt);
   } else {
