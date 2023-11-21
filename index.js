@@ -39,7 +39,7 @@ const displayEntries = () => {
   details.innerHTML = table;
 };
 
-const calculateAge = (dob) => {
+const calculateAges = (dob) => {
   const today = new Date();
   const birthDate = new Date(dob);
   let age = today.getFullYear() - birthDate.getFullYear();
@@ -59,7 +59,7 @@ const saveUserForm = (event) => {
   const acceptedTermsAndconditions = document.getElementById("acceptTerms").checked;
   
   // Calculate age and check if it's between 18 and 55
-  const age = calculateAge(dob);
+  const age = calculateAges(dob);
   if (age < 18 || age > 55) {
     alert("Age must be between 18 and 55.");
     return;
