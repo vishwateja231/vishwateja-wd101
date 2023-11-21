@@ -1,119 +1,74 @@
-let userdata = document.getElementById("user-data");
+<!DOCTYPE html>
+<html lang="en">
 
-const getdata = () => {
-  let displaydataget = localStorage.getItem("user_entries");
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Registration Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
 
-  if (displaydataget) {
-    displaydataget = JSON.parse(displaydataget);
-  } else {
-    displaydataget = [];
-  }
+<body>
+  <div class="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 bg-gray-50">
+    <div class="relative bg-white px-6 pt-5 pb-5 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+      <div class="mx-auto max-w-md">
+        <h2 class="text-3xl text-center font-bold leading-tight">
+          Registration Form
+        </h2>
+        <div class="divide-y divide-gray-300/50">
+          <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+            <form id="user-form">
+              <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                Name
+              </label>
+              <input required type="text" id="name" name="name"
+                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            focus: invalid:border-pink-500 focus: invalid:ring-pink-500" placeholder="Enter full name"></br>
+              <label for="email" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                Email
+              </label>
+              <input required type="email" id="email" name="email"
+                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            focus: invalid:border-pink-500 focus: invalid: ring-pink-500" placeholder="Enter email"></br>
+              <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                Password
+              </label>
+              <input required type="password" id="password" name="password"
+                class="bg-gray-100 inline-block rounded-1g shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            focus: invalid:border-pink-500 focus: invalid: ring-pink-500"
+                placeholder="Enter password"></br>
+              <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+                Date of Birth
+              </label>
+              <input required type="date" id="dob" name="dob"
+                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                            focus: invalid:border-pink-500 focus:invalid: ring-pink-500"></br>
+              <label for="acceptTerms" class="text-md w-50 inline-block font-medium leading-5 text-gray-700">
+                Accept Terms & Conditions
+              </label>
+              <input type="checkbox" id="acceptTerms" name="acceptTerms"
+                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-500"></br>
+              <button type="submit"
+                class="w-fit rounded-lg shadow-lg px-8 py-4 bg-green-500 text-white hover:bg-green-400 focus:outline-none focus: shadow-outline transition ">
+                submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="relative bg-white px-6 mt-5 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-1g sm:px-10">
+      <div class="mx-auto">
+        <h2 class="text-3xl text-center font-bold leading-tight">Entries</h2>
+        <div class="divide-y divide-gray-300/50" id="user-entries"></div>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
 
-  return displaydataget;
-};
-
-let user_entries = getdata();
-
-const displaydata = () => {
-  const displaydataget = getdata();
-
-  const tabledata = displaydataget
-    .map((entrydata) => {
-      const namefield = `<td >${entrydata.name}</td>`;
-      const emailfield = `<td >${entrydata.email}</td>`;
-      const passwordfield = `<td >${entrydata.password}</td>`;
-      const dobfield = `<td >${entrydata.dob}</td>`;
-      const tcfield = `<td >${entrydata.tc}</td>`;
-
-      const rowfield = `<tr> ${namefield} ${emailfield} ${passwordfield} ${dobfield} ${tcfield} </tr>`;
-
-      return rowfield;
-    })
-    .join("\n");
-
-  const table = `<table  class = "table-auto w-full" ><tr>
-  
-  <th >Name</th>
-  <th >Email</th>
-  <th >Password</th>
-  <th >Dob</th>
-  <th >Accepted terms?</th>
-
-  </tr> ${tabledata} 
-  </table>`;
-
-  let details = document.getElementById("output");
-  details.innerHTML = table;
-};
-
-const saveuserdata = (event) => {
-  event.preventDefault();
-
-  const name = document.getElementById("name").value;
-
-  const email = document.getElementById("email").value;
-
-  const password = document.getElementById("password").value;
-
-  const dob = document.getElementById("dob").value;
-
-  const tc = document.getElementById("tc").checked;
-
-  const entry = {
-    name,
-    email,
-    password,
-    dob,
-    tc,
-  };
-
-  user_entries.push(entry);
-
-  localStorage.setItem("user_entries", JSON.stringify(user_entries));
-
-  displaydata();
-};
-
-userdata.addEventListener("submit", saveuserdata);
-displaydata();
-
-const email = document.getElementById("email");
-
-email.addEventListener("input", () => valid(email));
-
-const sub = document.getElementById("sbutton");
-
-sub.addEventListener("click", () => valid(email));
-
-function valid(element) {
-  const checkemail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-
-  if (email.value == "" || !checkemail.test(email.value)) {
-    element.setCustomValidity("The Email is not correct ");
-    element.reportValidity();
-  } else {
-    element.setCustomValidity("");
-  }
-}
-
-const dob = document.getElementById("dob");
-
-dob.addEventListener("input", () => validatedob(dob));
-
-sub.addEventListener("click", () => validatedob(dob));
-
-function validatedob(element) {
-  const newtoday = new Date();
-  const dobDatenew = new Date(dob.value);
-  const ageinms = newtoday - dobDatenew;
-  const agey = ageinms / 1000 / 60 / 60 / 24 / 365.25;
-
-  if (agey < 18 || agey > 55) {
-    element.setCustomValidity(
-      "Age should be Greater than 18 and less than 55 "
-    );
-    element.reportValidity();
-  } else {
-    element.setCustomValidity("");
-  }
-}
+</html>
