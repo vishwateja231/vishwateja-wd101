@@ -1,6 +1,12 @@
-html{
-    background-color: aquamarine;
+index{
+    background-color:green;
+    padding:3px;
+    font-size:25px;
 }
 h1{
-    color:blue:
+    color:blue;
+    font-size:20px;
+    font-style:italic;
+    font-weight:bold;
+    
 }
