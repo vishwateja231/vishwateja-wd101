@@ -1,20 +1,20 @@
-const form = document.getElementById("user-form");
+let userForm = document.getElementById("user-form");
 
-const getStoredEntries = () => {
-  let storedEntries = localStorage.getItem("user-entries");
-  if (storedEntries) {
-    return JSON.parse(storedEntries);
+const retrieveEntries = () => {
+  let vt = localStorage.getItem("user-entries");
+  if (vt) {
+    return JSON.parse(vt);
   } else {
     return [];
   }
 };
 
-let entriesArray = getStoredEntries();
+let userEntries = retrieveEntries();
 
-const showEntries = () => {
-  const entries = getStoredEntries();
+const displayEntries = () => {
+  const vt = retrieveEntries();
   
-  const tableRows = entries.map((entry) => {
+  const tableEntries = vt.map((entry) => {
     const nameCell = `<td class='border px-4 py-2'>${entry.name}</td>`;
     const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`;
     const passwordCell = `<td class='border px-4 py-2'>${entry.password}</td>`;
@@ -32,35 +32,35 @@ const showEntries = () => {
                     <th class="px-4 py-2">DOB</th>
                     <th class="px-4 py-2">Accepted Terms?</th>
                   </tr>
-                  ${tableRows}
+                  ${tableEntries}
                 </table>`;
 
-  let entriesDetails = document.getElementById("user-entries");
-  entriesDetails.innerHTML = table;
+  let details = document.getElementById("user-entries");
+  details.innerHTML = table;
 };
 
-const calculateUserAge = (dob) => {
-  const currentDate = new Date();
+const calculateAge = (dob) => {
+  const today = new Date();
   const birthDate = new Date(dob);
-  let age = currentDate.getFullYear() - birthDate.getFullYear();
-  const monthDifference = currentDate.getMonth() - birthDate.getMonth();
-  if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())) {
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
     age--;
   }
   return age;
 };
 
-const saveUserData = (event) => {
+const saveUserForm = (event) => {
   event.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const dob = document.getElementById("dob").value;
-  const acceptedTermsAndConditions = document.getElementById("acceptTerms").checked;
+  const acceptedTermsAndconditions = document.getElementById("acceptTerms").checked;
   
   // Calculate age and check if it's between 18 and 55
-  const userAge = calculateUserAge(dob);
-  if (userAge < 18 || userAge > 55) {
+  const age = calculateAge(dob);
+  if (age < 18 || age > 55) {
     alert("Age must be between 18 and 55.");
     return;
   }
@@ -70,13 +70,13 @@ const saveUserData = (event) => {
     email,
     password,
     dob,
-    acceptedTermsAndConditions,
+    acceptedTermsAndconditions,
   };
-  entriesArray.push(entry);
+  userEntries.push(entry);
   
-  localStorage.setItem("user-entries", JSON.stringify(entriesArray));
-  showEntries();
+  localStorage.setItem("user-entries", JSON.stringify(userEntries));
+  displayEntries();
 };
 
-form.addEventListener("submit", saveUserData);
-showEntries();
+userForm.addEventListener("submit", saveUserForm);
+displayEntries();
