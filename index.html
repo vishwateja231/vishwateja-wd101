@@ -16,15 +16,15 @@
 
 <body>
   <div class="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 bg-gray-50">
-    <div class="relative bg-white px-6 pt-5 pb-5 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+    <div class="relative bg-white px-6 pt-5 pb-5 shadow-l ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-xl sm:rounded-xl sm:px-10">
       <div class="mx-auto max-w-md">
-        <h2 class="text-3xl text-center font-bold leading-tight">
+        <h2 class="text-4xl text-center leading-tight">
           Registration -Form
         </h2>
         <div class="divide-y divide-gray-300/50">
-          <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+          <div class="space-y-6 py-8 text-base leading-7 text-gray-200">
             <form id="user-form">
-              <label for="name" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+              <label for="name" class="text-md w-50 inline-block font-medium leading-5 text-gray-400">
                 Name
               </label>
               <input required type="text" id="name" name="name"
@@ -36,7 +36,7 @@
               <input required type="email" id="email" name="email"
                 class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
                             focus: invalid:border-pink-500 focus: invalid: ring-pink-500" placeholder="Enter email"></br>
-              <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
+              <label for="password" class="text-lg w-30 inline-block font-small leading-5 text-gray-700">
                 Password
               </label>
               <input required type="password" id="password" name="password"
@@ -47,15 +47,15 @@
                 Date of Birth
               </label>
               <input required type="date" id="dob" name="dob"
-                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500
+                class="bg-gray-600 inline-block rounded-lg shadow-xl px-4 py-3 mb-3 text-base leading-6 placeholder-gray-500
                             focus: invalid:border-pink-500 focus:invalid: ring-pink-500"></br>
               <label for="acceptTerms" class="text-md w-50 inline-block font-medium leading-5 text-gray-700">
                 Accept Terms & Conditions
               </label>
               <input type="checkbox" id="acceptTerms" name="acceptTerms"
-                class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-500"></br>
+                class="bg-gray-500 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus:placeholder-gray-500"></br>
               <button type="submit"
-                class="w-fit rounded-lg shadow-lg px-8 py-4 bg-green-500 text-white hover:bg-green-400 focus:outline-none focus: shadow-outline transition ">
+                class="w-fit rounded-xl shadow-xl px-8 py-4 bg-green-500 text-black hover:bg-yellow-900 focus:outline-none focus: shadow-outline transition ">
                 submit
               </button>
             </form>
